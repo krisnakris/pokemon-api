@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const PORT = 3006 || process.env.PORT;
+const PORT = process.env.PORT || 3006;
 
 app.get('/pokemon/catch', (req, res) => {
   res.send({ result: catchPokemon() });
@@ -18,7 +18,6 @@ app.get('/pokemon/release', (req, res) => {
 
 app.post('/pokemon/rename', (req, res) => {
   let { name, renamedTimes } = req.body;
-  console.log('req.body: ', req.body);
   res.send({ renamedName: renamePokemon(name, renamedTimes) });
 });
 
