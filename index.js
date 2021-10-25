@@ -1,10 +1,11 @@
 const express = require('express');
 const cors = require('cors');
-const axios = require('axios');
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+const PORT = 3006 || process.env.PORT;
 
 app.get('/pokemon/catch', (req, res) => {
   res.send({ result: catchPokemon() });
@@ -21,8 +22,8 @@ app.post('/pokemon/rename', (req, res) => {
   res.send({ renamedName: renamePokemon(name, renamedTimes) });
 });
 
-app.listen(3006, () => {
-  console.log(`Listening on port 3006`);
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
 });
 
 const primePool = [];
